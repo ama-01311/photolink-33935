@@ -1,12 +1,18 @@
 * {
   box-sizing: border-box;
 }
-
+.logo{
+  text-align: center;
+  padding: 10px;
+}
 .top-page-header {
   width: 100vw;
   padding: 2vh 15vw;
   display: flex;
   flex-direction: column;
+  /*background-color:rgba(110, 149, 185, 0.575);*/
+  background-color: black;
+  color: aliceblue;
 }
 
 .search-bar-contents {
@@ -16,8 +22,8 @@
 }
 
 .furima-icon {
-  width: 10vw;
-  margin-right: 10vw;
+  width: 20vw;
+  /*margin-right: 10vw;*/
 }
 
 .search-form {
@@ -28,7 +34,7 @@
 }
 
 .search-form>.input-box {
-  width: 100%;
+  width: 50%;
   height: 5vh;
   padding-left: 10px;
 }
