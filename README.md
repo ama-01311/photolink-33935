@@ -46,10 +46,8 @@
 
 - belongs_to :photo
 - belongs_to :user
-- has_one :address
-- has_one :option
 
-## addressesテーブル
+## optionsテーブル
 
 | Column                   | Type        | Options           |
 | ------------------------ | ----------- | ----------------- |
@@ -59,19 +57,22 @@
 | address                  | string      | null: false       |
 | building                 | string      |                   |
 | phone_number             | string      | null: false       |
-| order                    | references  | foreign_key :true |
-
-### Association
-- belongs_to :order
-
-## optionsテーブル
-
-| Column                   | Type        | Options           |
-| ------------------------ | ----------- | ----------------- |
 | theme_id                 | integer     | null: false       |
 | flame_id                 | integer     | null: false       |
 | type_id                  | integer     | null: false       |
-| order                    | references  | foreign_key :true |
+| order_option             | references  | foreign_key :true |
 
 ### Association
-- belongs_to :order
+- belongs_to :order_option
+
+## order_optionsテーブル
+
+| Column                   | Type        | Options           |
+| ------------------------ | ----------- | ----------------- |
+| user                     | references  | foreign_key: true |
+| photo                    | references  | foreign_key: true |
+
+### Association
+- belongs_to :photo
+- belongs_to :user
+- has_one :option
