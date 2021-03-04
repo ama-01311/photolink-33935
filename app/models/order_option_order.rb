@@ -1,15 +1,9 @@
 class OrderOptionOrder
   include ActiveModel::Model
   attr_accessor :theme_id, :flame_id, :type_id,
-                :post_number, :prefecture_id, :municipality, :address, :building, :phone_number, :order_option_id, :user_id, :photo_id,
+                :post_number, :prefecture_id, :municipality, :address, :building, :phone_number, :order_option_id, :user_id, :photo_id
                 #:token
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :theme
-    belongs_to :flame
-    belongs_to :type
-    belongs_to :prefecture
-              
 
   with_options presence: true do
     validates :post_number, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
