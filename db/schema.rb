@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_022952) do
+ActiveRecord::Schema.define(version: 2021_03_03_142641) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,40 @@ ActiveRecord::Schema.define(version: 2021_02_19_022952) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "post_number", null: false
+    t.integer "prefecture_id", null: false
+    t.string "municipality", null: false
+    t.string "address", null: false
+    t.string "building"
+    t.string "phone_number", null: false
+    t.integer "theme_id", null: false
+    t.integer "flame_id", null: false
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "order_option_id", null: false
+    t.index ["order_option_id"], name: "index_options_on_order_option_id"
+  end
+
+  create_table "order_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_order_options_on_photo_id"
+    t.index ["user_id"], name: "index_order_options_on_user_id"
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_orders_on_photo_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -64,5 +98,10 @@ ActiveRecord::Schema.define(version: 2021_02_19_022952) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "options", "order_options"
+  add_foreign_key "order_options", "photos"
+  add_foreign_key "order_options", "users"
+  add_foreign_key "orders", "photos"
+  add_foreign_key "orders", "users"
   add_foreign_key "photos", "users"
 end

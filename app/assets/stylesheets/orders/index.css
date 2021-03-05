@@ -1,12 +1,12 @@
 .transaction-contents {
   width: 100vw;
-  background-color: #f5f5f5;
+  background-color: #000000;
   display: flex;
   justify-content: center;
+  color: aliceblue;
 }
 
 .transaction-main {
-  background-color: #FFF;
   width: 70vw;
   min-width: 450px;
   padding: 10vh 10vw;
