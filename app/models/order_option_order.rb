@@ -1,8 +1,8 @@
 class OrderOptionOrder
   include ActiveModel::Model
   attr_accessor :theme_id, :flame_id, :type_id,
-                :post_number, :prefecture_id, :municipality, :address, :building, :phone_number, :order_option_id, :user_id, :photo_id
-                #:token
+                :post_number, :prefecture_id, :municipality, :address, :building, :phone_number, :order_option_id, :user_id, :photo_id,
+                :token
 
 
   with_options presence: true do
@@ -14,7 +14,7 @@ class OrderOptionOrder
     validates :user_id
     validates :photo_id
 
-   #validates :token
+    validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1 }
 
