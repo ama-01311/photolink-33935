@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "photos#index"
   resources :photos do
     resources :orders, only: [:index, :create]
-    resources :order_options, only:[:index, :create] 
+    resources :order_options, only:[:index, :create]
+    collection do
+      get 'search'
+    end
   end
 end

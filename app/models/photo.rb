@@ -20,4 +20,12 @@ class Photo < ApplicationRecord
     validates :photo_category_id
     validates :photo_place_id
   end
+
+  def self.search(search)
+    if search != ""
+      Photo.where('text LIKE(?)', "%#{search}%")
+    else
+      Photo.all
+    end
+  end
 end
